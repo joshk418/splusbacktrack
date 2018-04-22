@@ -81,7 +81,7 @@
             this.lblCopyright.TabIndex = 0;
             this.lblCopyright.Text = "Copyright";
             this.lblCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblCopyright.Click += new System.EventHandler(this.lblCopyright_Click);
+            this.lblCopyright.Click += new System.EventHandler(this.LblCopyright_Click);
             // 
             // AboutForm
             // 
