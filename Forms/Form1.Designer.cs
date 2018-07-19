@@ -500,7 +500,6 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "S-Plus Backtrack Studio (Test)";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).EndInit();
             this.panel1.ResumeLayout(false);

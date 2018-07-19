@@ -11,14 +11,11 @@ namespace SPBS.Dialogs
             InitializeComponent();
 
             var title = Application.ProductName;
+            var version = Application.ProductVersion;
 
             lblTitle.Text = title;
             lblCompany.Text = "Joshua Kyte";
             lblCopyright.Text = "Copyright ©  2017";
-
-
-
-            var version = Application.ProductVersion;
 
             if (ApplicationDeployment.IsNetworkDeployed)
             {
@@ -26,31 +23,6 @@ namespace SPBS.Dialogs
 
                 lblVersion.Text = "Version: " + version;
             }
-        }
-
-        private void LblCopyright_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblTitle_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblVersion_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblCompany_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AboutForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

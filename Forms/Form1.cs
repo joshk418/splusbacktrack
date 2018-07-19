@@ -27,11 +27,11 @@ namespace SPBS
         public new static string ProductVersion { get; }
         public Keys KeyCode { get; private set; }
 
-        //Test Commit to new branch
 
         public Form1()
         {
             InitializeComponent();
+
             FilePath1 = Properties.Settings.Default.FilePath1;
             FilePath2 = Properties.Settings.Default.FilePath2;
             FilePath3 = Properties.Settings.Default.FilePath3;
@@ -56,16 +56,6 @@ namespace SPBS
             button5.Text = Properties.Settings.Default.Label5;
             button6.Text = Properties.Settings.Default.Label6;
             button7.Text = Properties.Settings.Default.Label7;
-
-
-            //var version = Application.ProductVersion;
-
-            //if (ApplicationDeployment.IsNetworkDeployed)
-            //{
-            //    version = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
-
-            //    lblVersion.Text = "Version: " + version;
-            //}
 
             mediaPlayer.settings.volume = 100;
         }
@@ -120,10 +110,6 @@ namespace SPBS
         {
             PlaySong(FilePath8);
         }
-        
-
-        
-
 
         private void btnSelectFile_Click(object sender, EventArgs e)
         {
@@ -293,23 +279,19 @@ namespace SPBS
             aboutdialog.ShowDialog();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-           // lblVersion.Text = "Version:" + Application.ProductVersion;
-
-        }
-
-        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
         private void Form1_KeyPress(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
                 case Keys.Space:
-                    mediaPlayer.Ctlcontrols.stop();
+                    if (mediaPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
+                    {
+                        mediaPlayer.Ctlcontrols.pause();
+                    }
+                    else
+                    {
+                        mediaPlayer.Ctlcontrols.play();
+                    }
                     break;
                 case Keys.D1:
                     PlaySong(FilePath1);
@@ -332,8 +314,6 @@ namespace SPBS
                 case Keys.D7:
                     PlaySong(FilePath7);
                     break;
-                
-
             }
 
         }

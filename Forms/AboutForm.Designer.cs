@@ -45,7 +45,6 @@
             this.lblCompany.TabIndex = 0;
             this.lblCompany.Text = "Company";
             this.lblCompany.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblCompany.Click += new System.EventHandler(this.lblCompany_Click);
             // 
             // lblTitle
             // 
@@ -57,7 +56,6 @@
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Title";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // lblVersion
             // 
@@ -69,7 +67,6 @@
             this.lblVersion.TabIndex = 0;
             this.lblVersion.Text = "Version: {0}{1}{2}{3}";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblVersion.Click += new System.EventHandler(this.lblVersion_Click);
             // 
             // lblCopyright
             // 
@@ -81,7 +78,6 @@
             this.lblCopyright.TabIndex = 0;
             this.lblCopyright.Text = "Copyright";
             this.lblCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblCopyright.Click += new System.EventHandler(this.LblCopyright_Click);
             // 
             // AboutForm
             // 
@@ -99,7 +95,6 @@
             this.Name = "AboutForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About";
-            this.Load += new System.EventHandler(this.AboutForm_Load);
             this.ResumeLayout(false);
 
         }
