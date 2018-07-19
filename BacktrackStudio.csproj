@@ -52,7 +52,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon3_spbs_test.ico</ApplicationIcon>
+    <ApplicationIcon>Icons\icon3_spbs_test.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>E8EBE3A738188127B72AEA182E4B5EBBD602B244</ManifestCertificateThumbprint>
@@ -168,8 +168,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Alecive-Flatwoken-Apps-Player-Audio-B.ico" />
-    <Content Include="icon3_spbs_test.ico" />
+    <Content Include="Icons\Alecive-Flatwoken-Apps-Player-Audio-B.ico" />
+    <Content Include="Icons\icon3_spbs_test.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -15,7 +15,7 @@ namespace SPBS.Dialogs
 
             lblTitle.Text = title;
             lblCompany.Text = "Joshua Kyte";
-            lblCopyright.Text = "Copyright ©  2017";
+            lblCopyright.Text = "Copyright © " + DateTime.Now.Year;
 
             if (ApplicationDeployment.IsNetworkDeployed)
             {
