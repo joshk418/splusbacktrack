@@ -107,7 +107,7 @@
             this.lblFileName1.Name = "lblFileName1";
             this.lblFileName1.Size = new System.Drawing.Size(200, 13);
             this.lblFileName1.TabIndex = 3;
-            this.lblFileName1.Text = "aergawertaergaergaergaergaeraergaergaergaerggaerg";
+            this.lblFileName1.Text = "Filepath";
             // 
             // lblFileName2
             // 
@@ -121,7 +121,7 @@
             this.lblFileName2.Name = "lblFileName2";
             this.lblFileName2.Size = new System.Drawing.Size(200, 13);
             this.lblFileName2.TabIndex = 6;
-            this.lblFileName2.Text = "filename";
+            this.lblFileName2.Text = "Filepath";
             // 
             // btnSelectFile2
             // 
@@ -164,7 +164,7 @@
             this.lblFileName3.Name = "lblFileName3";
             this.lblFileName3.Size = new System.Drawing.Size(200, 13);
             this.lblFileName3.TabIndex = 9;
-            this.lblFileName3.Text = "filename";
+            this.lblFileName3.Text = "Filepath";
             // 
             // btnSelectFile3
             // 
@@ -207,7 +207,7 @@
             this.lblFileName4.Name = "lblFileName4";
             this.lblFileName4.Size = new System.Drawing.Size(200, 13);
             this.lblFileName4.TabIndex = 12;
-            this.lblFileName4.Text = "filename";
+            this.lblFileName4.Text = "Filepath";
             // 
             // btnSelectFile4
             // 
@@ -250,7 +250,7 @@
             this.lblFileName5.Name = "lblFileName5";
             this.lblFileName5.Size = new System.Drawing.Size(200, 13);
             this.lblFileName5.TabIndex = 15;
-            this.lblFileName5.Text = "filename";
+            this.lblFileName5.Text = "Filepath";
             // 
             // btnSelectFile5
             // 
@@ -293,7 +293,7 @@
             this.lblFileName6.Name = "lblFileName6";
             this.lblFileName6.Size = new System.Drawing.Size(200, 13);
             this.lblFileName6.TabIndex = 18;
-            this.lblFileName6.Text = "filename";
+            this.lblFileName6.Text = "Filepath";
             this.toolTip1.SetToolTip(this.lblFileName6, "lblFileName6.Text");
             // 
             // btnSelectFile6
@@ -337,7 +337,7 @@
             this.lblFileName7.Name = "lblFileName7";
             this.lblFileName7.Size = new System.Drawing.Size(200, 13);
             this.lblFileName7.TabIndex = 21;
-            this.lblFileName7.Text = "filename";
+            this.lblFileName7.Text = "Filepath";
             // 
             // btnSelectFile7
             // 
@@ -394,7 +394,7 @@
             this.lblAbout.TabIndex = 31;
             this.lblAbout.Text = "?";
             this.toolTip1.SetToolTip(this.lblAbout, "About Information");
-            this.lblAbout.Click += new System.EventHandler(this.lblVersion_Click);
+            this.lblAbout.Click += new System.EventHandler(this.LblVersion_Click);
             // 
             // panel1
             // 
@@ -500,7 +500,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "S-Plus Backtrack Studio (Test)";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyPress);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

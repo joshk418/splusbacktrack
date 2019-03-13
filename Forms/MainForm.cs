@@ -15,116 +15,80 @@ namespace SPBS
 {
     public partial class MainForm : Form
     {
-        const string FILE_INFO_FILEPATH = @"..\\SongData\\mediainfo.txt";
-
-        /*
-        public string FilePath1 { get; set; }
-        public string FilePath2 { get; set; }
-        public string FilePath3 { get; set; }
-        public string FilePath4 { get; set; }
-        public string FilePath5 { get; set; }
-        public string FilePath6 { get; set; }
-        public string FilePath7 { get; set; }
-        public string FilePath8 { get; set; }
-        public string FilePath9 { get; set; }
-        public string FilePath10 { get; set; }
-        */
+        const string FILE_INFO_FILEPATH = @"..\\SongData\\mediainfo.txt";        
 
         public new static string ProductVersion { get; }
         public Keys KeyCode { get; private set; }
 
         private List<Button> PlayButtonList;
         private List<Button> SelectFileButtonList;
+        private List<Label> SongLabelList;
         private List<MediaFile> MediaFileList;
         private List<string> mediaInfoFile = File.ReadAllLines(FILE_INFO_FILEPATH).ToList();
 
         public MainForm()
         {
             InitializeComponent();
-
-
-
-            /*
-            FilePath1 = Properties.Settings.Default.FilePath1;
-            FilePath2 = Properties.Settings.Default.FilePath2;
-            FilePath3 = Properties.Settings.Default.FilePath3;
-            FilePath4 = Properties.Settings.Default.FilePath4;
-            FilePath5 = Properties.Settings.Default.FilePath5;
-            FilePath6 = Properties.Settings.Default.FilePath6;
-            FilePath7 = Properties.Settings.Default.FilePath7;
-            FilePath8 = Properties.Settings.Default.FilePath8;                  
-
-            lblFileName1.Text = FilePath1;
-            lblFileName2.Text = FilePath2;
-            lblFileName3.Text = FilePath3;
-            lblFileName4.Text = FilePath4;
-            lblFileName5.Text = FilePath5;
-            lblFileName6.Text = FilePath6;
-            lblFileName7.Text = FilePath7;
-                 
-            button1.Text = Properties.Settings.Default.Label1;
-            button2.Text = Properties.Settings.Default.Label2;
-            button3.Text = Properties.Settings.Default.Label3;
-            button4.Text = Properties.Settings.Default.Label4;
-            button5.Text = Properties.Settings.Default.Label5;
-            button6.Text = Properties.Settings.Default.Label6;
-            button7.Text = Properties.Settings.Default.Label7;
-            */
-            var properties = Properties.Settings.Default;
+            
+            // TODO: Create way for user to add new button            
             
             MediaFileList = new List<MediaFile> { };
 
-            foreach (var line in mediaInfoFile)
-            {
-                var info = line.Split('|');
-                MediaFileList.Add(new MediaFile(info[0], info[1]));
-            }
-           
             PlayButtonList = new List<Button>
             {
                 button1,
-                button2
-
+                button2,
+                button3,
+                button4,
+                button5,
+                button6,
+                button7
             };
 
             SelectFileButtonList = new List<Button>
             {
                 btnSelectFile1,
-                btnSelectFile2
+                btnSelectFile2,
+                btnSelectFile3,
+                btnSelectFile4,
+                btnSelectFile5,
+                btnSelectFile6,
+                btnSelectFile7
             };
 
+            SongLabelList = new List<Label>
+            {
+                lblFileName1,
+                lblFileName2,
+                lblFileName3,
+                lblFileName4,
+                lblFileName5,
+                lblFileName6,
+                lblFileName7
+            };
             
+            foreach (var line in mediaInfoFile)
+            {
+                var info = line.Split('|');
+                MediaFileList.Add(new MediaFile(info[0], info[1]));
+            }
+
+            UpdateUIText();
 
             mediaPlayer.settings.volume = 100;
-        }
-
-        private void PlaySong(string filePath)
-        {
-            var url = filePath;
-            if (!File.Exists(url))
-            {
-                MessageBox.Show("File Not Found");
-                return;
-            }
-            mediaPlayer.URL = url;
-        }
+        }        
 
         private void SelectFile(object button, EventArgs e)
         {
             var buttonIndex = GetButtonIndex(button);
             var pressedPlayButton = PlayButtonList[buttonIndex];
             var dialog = new SelectFileDialog();
+
             dialog.ShowDialog();
 
             if (dialog.DialogResult == DialogResult.OK)
             {
-                var filePath = dialog.FilePath;
-                var label = dialog.Label;
-
-                MediaFileList[buttonIndex].FilePath = filePath;
-                PlayButtonList[buttonIndex].Text = label;
-
-                ResetFileStorage();
+                EditMediaFileInformation(buttonIndex, dialog.FilePath, dialog.Label);                
             }
 
             dialog.Dispose();
@@ -135,7 +99,26 @@ namespace SPBS
         {
             var buttonIndex = GetButtonIndex(button);
             PlaySong(MediaFileList[buttonIndex].FilePath);
+            ResetFileStorage();
             Console.WriteLine(MediaFileList[buttonIndex].FilePath);
+        }
+
+        private void PlaySong(string filePath)
+        {
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("File Not Found");
+                return;
+            }
+            mediaPlayer.URL = filePath;
+        }
+
+        private void UpdateUIText()
+        {
+            for(var i = 0; i < MediaFileList.Count; i++)
+            {
+                EditMediaFileInformation(i, MediaFileList[i].FilePath, MediaFileList[i].Label);
+            }
         }
 
         private int GetButtonIndex(object button)
@@ -159,26 +142,34 @@ namespace SPBS
             return -1;
         }
 
+        private void EditMediaFileInformation(int index, string filePath, string label)
+        {
+            MediaFileList[index].FilePath = filePath;
+            SongLabelList[index].Text = filePath;
+            PlayButtonList[index].Text = label;
+            MediaFileList[index].Label = label;
+        }
+
         private void ResetFileStorage()
         {
             File.WriteAllText(FILE_INFO_FILEPATH, string.Empty);
 
-            for(var i = 0; i < MediaFileList.Count; i++)
+            for (var i = 0; i < mediaInfoFile.Count; i++)
             {
-                mediaInfoFile.Add($"{MediaFileList[i].FilePath}|{MediaFileList[i].Label}");
-                File.WriteAllLines(FILE_INFO_FILEPATH, mediaInfoFile);
+                mediaInfoFile[i] = $"{MediaFileList[i].FilePath}|{MediaFileList[i].Label}";                
             }
+
+            File.WriteAllLines(FILE_INFO_FILEPATH, mediaInfoFile);
         }
 
-        private void lblVersion_Click(object sender, EventArgs e)
+        private void LblVersion_Click(object sender, EventArgs e)
         {
             var aboutdialog = new AboutForm();
             aboutdialog.ShowDialog();
         }
 
-        private void Form1_KeyPress(object sender, KeyEventArgs e)
+        private void MainForm_KeyPress(object sender, KeyEventArgs e)
         {
-            /*
             switch (e.KeyCode)
             {
                 case Keys.Space:
@@ -191,29 +182,7 @@ namespace SPBS
                         mediaPlayer.Ctlcontrols.play();
                     }
                     break;
-                case Keys.D1:
-                    PlaySong(FilePath1);
-                    break;
-                case Keys.D2:
-                    PlaySong(FilePath2);
-                    break;
-                case Keys.D3:
-                    PlaySong(FilePath3);
-                    break;
-                case Keys.D4:
-                    PlaySong(FilePath4);
-                    break;
-                case Keys.D5:
-                    PlaySong(FilePath5);
-                    break;
-                case Keys.D6:
-                    PlaySong(FilePath6);
-                    break;
-                case Keys.D7:
-                    PlaySong(FilePath7);
-                    break;
             }
-            */
 
         }
     }
